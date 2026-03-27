@@ -2,7 +2,7 @@ import streamlit as st
 from dataclasses import dataclass
 from typing import Dict, List
 
-st.set_page_config(page_title="외국어평가 방법론", layout="wide")
+st.set_page_config(page_title="외국어평가", layout="wide")
 
 # -----------------------------
 # 1) 데이터 구조
