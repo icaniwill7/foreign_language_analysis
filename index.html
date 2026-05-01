@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yonsei Language Mirror</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="brand-strip" aria-label="연세대학교 언어 자가진단">
+          <img class="brand-mark" src="./yonsei-mark.svg" alt="Yonsei mark">
+          <div>
+            <p class="brand-campus">Yonsei University</p>
+            <p class="brand-course">외국어 수행 역량 자가진단</p>
+          </div>
+        </div>
+        <p class="eyebrow">CEFR Self Assessment</p>
+        <h1>Yonsei Language Mirror</h1>
+        <p class="hero-text">
+          현재 외국어 사용 능력을 듣기, 읽기, 상호작용, 발표, 쓰기 영역으로 나누어 점검하고
+          CEFR 기준에 가까운 수준과 다음 학습 방향을 확인해 보세요.
+        </p>
+      </div>
+      <aside class="hero-panel">
+        <p class="panel-label">How it works</p>
+        <ol>
+          <li>평가할 언어와 사용 목적을 선택합니다.</li>
+          <li>각 상황에서 가장 가까운 수행 수준을 고릅니다.</li>
+          <li>전체 수준과 영역별 강점, 보완점을 확인합니다.</li>
+        </ol>
+        <p class="panel-note">이 결과는 참고용 자가진단이며 공식 시험 점수를 대체하지 않습니다.</p>
+      </aside>
+    </header>
+
+    <main class="content-grid">
+      <section class="card">
+        <div class="section-heading">
+          <p class="kicker">Profile</p>
+          <h2>진단 설정</h2>
+        </div>
+        <form class="profile-grid">
+          <label>
+            <span>평가 언어</span>
+            <select id="language-select">
+              <option value="영어">영어</option>
+              <option value="중국어">중국어</option>
+              <option value="일본어">일본어</option>
+              <option value="프랑스어">프랑스어</option>
+              <option value="스페인어">스페인어</option>
+              <option value="기타 언어">기타 언어</option>
+            </select>
+          </label>
+          <label>
+            <span>사용 목적</span>
+            <select id="goal-select">
+              <option value="전공 수업과 학업">전공 수업과 학업</option>
+              <option value="교환학생 및 해외연수">교환학생 및 해외연수</option>
+              <option value="취업 및 면접 준비">취업 및 면접 준비</option>
+              <option value="일상 의사소통">일상 의사소통</option>
+            </select>
+          </label>
+          <label>
+            <span>메모</span>
+            <input id="user-note" type="text" placeholder="예: 발표는 괜찮지만 쓰기가 약함">
+          </label>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="kicker">Assessment</p>
+          <h2>가장 가까운 설명을 선택하세요</h2>
+        </div>
+        <div class="progress-wrap">
+          <strong id="progress-count">0 / 15</strong>
+          <div class="progress-track" aria-hidden="true">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+        <div id="question-root" class="question-root"></div>
+        <div class="action-row">
+          <button id="reset-button" class="ghost-button" type="button">다시 선택</button>
+          <button id="result-button" class="primary-button" type="button">결과 보기</button>
+        </div>
+      </section>
+
+      <section id="result-section" class="card results hidden" aria-live="polite">
+        <div class="section-heading">
+          <p class="kicker">Result</p>
+          <h2>나의 외국어 거울</h2>
+        </div>
+        <div class="result-hero">
+          <div>
+            <p id="result-language" class="result-language"></p>
+            <h3 id="overall-level"></h3>
+            <p id="overall-summary" class="overall-summary"></p>
+          </div>
+          <div class="result-chip-wrap">
+            <span id="goal-chip" class="result-chip"></span>
+            <span id="confidence-chip" class="result-chip accent"></span>
+          </div>
+        </div>
+        <div id="domain-root" class="domain-root"></div>
+        <div class="advice-grid">
+          <article class="advice-card">
+            <p class="advice-label">Strength Snapshot</p>
+            <p id="strength-text"></p>
+          </article>
+          <article class="advice-card">
+            <p class="advice-label">Next Focus</p>
+            <p id="focus-text"></p>
+          </article>
+          <article class="advice-card">
+            <p class="advice-label">Study Tip</p>
+            <p id="tip-text"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <template id="question-template">
+    <article class="question-card">
+      <div class="question-head">
+        <p class="domain-name"></p>
+        <h3></h3>
+        <p class="question-prompt"></p>
+      </div>
+      <div class="level-options" role="radiogroup"></div>
+    </article>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
